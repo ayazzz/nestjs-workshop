@@ -15,10 +15,10 @@ export class TaskService {
         return await this.service.find({});
     }
 
-    async saveTask(name: string, desc?: string) {
+    async saveTask(title: string, desc?: string) {
         const obj = {
             id: new Date().getTime(),
-            title: name,
+            title: title,
             description: desc || 'desc for ' + name,
             creation: new Date()
         };
