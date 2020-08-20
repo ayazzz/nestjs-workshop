@@ -1,8 +1,6 @@
 import * as path from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { Task } from './entities/tasks.entity';
 
 @Module({
@@ -14,7 +12,7 @@ import { Task } from './entities/tasks.entity';
             location: path.join(__dirname, 'db.json')
         })
     ],
-    controllers: [AppController],
-    providers: [AppService],
+    controllers: [],
+    providers: [],
 })
 export class AppModule { }
