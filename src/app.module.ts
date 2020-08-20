@@ -11,8 +11,8 @@ import { TaskService } from './task/task.service';
             type: 'sqljs',
             entities: [Task],
             location: './db.json',
+            synchronize: true, //not recommended for prod
             logging: true,
-            synchronize: true,
         }),
         TypeOrmModule.forFeature([Task])
     ],
