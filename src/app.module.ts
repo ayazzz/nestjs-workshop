@@ -9,7 +9,8 @@ import { Task } from './entities/tasks.entity';
             type: 'sqljs',
             entities: [Task],
             location: './db.json',
-            synchronize: true,
+            synchronize: true, //not recommended for prod
+            logging: true,
         })
     ],
     controllers: [],
