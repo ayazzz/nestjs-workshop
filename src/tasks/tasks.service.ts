@@ -9,8 +9,7 @@ export class TasksService {
     constructor(
         @InjectRepository(Task)
         private readonly repo: Repository<Task>
-    ) {
-    }
+    ) { }
 
     async getAllTasks(): Promise<Task[]> {
         return await this.repo.find();
@@ -21,6 +20,10 @@ export class TasksService {
     }
 
     async createTask(data: CreateTaskDto): Promise<Task> {
+        if (!data.date) {
+            data.date = new Date();
+        }
+
         return this.repo.save({
             description: data.desc,
             creation: data.date,

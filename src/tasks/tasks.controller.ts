@@ -19,7 +19,6 @@ export class TasksController {
 
     @Post('')
     createTask(@Body() data: CreateTaskDto) {
-        data.date = new Date();
         return this.service.createTask(data);
     }
 }
