@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './entities/tasks.entity';
+import { TasksController } from './tasks/tasks.controller';
+import { TasksService } from './tasks/tasks.service';
 
 @Module({
     imports: [
@@ -11,9 +13,10 @@ import { Task } from './entities/tasks.entity';
             location: './db.json',
             synchronize: true, //not recommended for prod
             logging: true,
-        })
+        }),
+        TypeOrmModule.forFeature([Task])
     ],
-    controllers: [],
-    providers: [],
+    controllers: [TasksController],
+    providers: [TasksService],
 })
 export class AppModule { }
