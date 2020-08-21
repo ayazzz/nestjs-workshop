@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, HttpException, BadRequestException } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 
@@ -8,7 +8,7 @@ export class TasksController {
     //TODO: get all tasks, create task, get task by id
 
     @Get('')
-    async  getAllTasks() {
+    async getAllTasks() {
         return await this.service.getAllTasks();
     }
 
@@ -19,6 +19,10 @@ export class TasksController {
 
     @Post('')
     createTask(@Body() data: CreateTaskDto) {
+        if (!data.title) {
+            throw new BadRequestException('Title is required');
+        }
+
         return this.service.createTask(data);
     }
 }
